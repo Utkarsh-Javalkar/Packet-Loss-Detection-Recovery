@@ -28,12 +28,12 @@ See `docs/architecture.md` for the link/port map.
 
 ```bash
 cd ~/Packet-Loss-Detection-Recovery
-python3.11 -m venv .venv
+uv venv --python 3.11 .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+uv pip install --python .venv/bin/python -r requirements.txt
 ```
 
-Mininet and Open vSwitch are system packages and must already be installed. Do not run the Mininet topology using the virtual environment Python; use system `sudo python3` as below.
+This uses the verified Python 3.11 toolchain and installs packages directly into the project virtual environment. Mininet and Open vSwitch are system packages and must already be installed. Do not run the Mininet topology using the virtual environment Python; use system `sudo python3` as below.
 
 ## 2. Start OS-Ken (Terminal 1)
 
@@ -148,3 +148,13 @@ If the qdisc is still present and the topology is active, remove it before exit 
 ## Safety and scope
 
 Run only in the isolated Ubuntu/VirtualBox Mininet lab. Do not expose OpenFlow or telemetry ports to untrusted networks. The prototype validates telemetry structure, source endpoint, timestamp freshness, and monotonically increasing report IDs; it is not production authentication or encryption.
+
+
+## 8. Submission documentation and evidence
+
+- `docs/Team11_SRS_Final.docx` and `docs/Team11_STP_Final.docx`: team-approved source documents supplied for this submission.
+- `docs/IMPLEMENTATION_CONFIGURATION_RECORD.md`: observed environment, address/port plan, message fields, thresholds and timer values closing the SRS TBD list.
+- `docs/architecture_diagram.png` and `docs/architecture.md`: verified topology and switch-port mapping.
+- `docs/Developer_Execution_Report.docx`: developer smoke/integration observations; not a substitute for formal STP sign-off.
+- `docs/evidence/`: screenshots and evidence index.
+- `tests/developer_execution_record.csv`: supplementary per-case evidence assessment. The formal STP remains the controlling test plan.
